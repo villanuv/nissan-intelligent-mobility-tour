@@ -1,0 +1,97 @@
+<%= form_for @user do |f| %>
+	<% flash.each do |key, value| %>
+	<div class="<%= flash_class(key) %>">
+		<%= value %>
+	</div>
+	<% end %>
+
+	<div>
+		<%= f.label :first_name, "First Name" %><br />
+		<%= f.text_field :first_name %>
+	</div>
+
+	<div>
+		<%= f.label :last_name, "Last Name" %><br />
+		<%= f.text_field :last_name %><br />
+	</div>
+
+	<div>
+		<%= f.label :street_address, "Address" %><br />
+		<%= f.text_field :street_address %>
+	</div>
+
+	<div>
+		<%= f.label :city %><br />
+		<%= f.text_field :city %><br />
+	</div>
+
+	<div>
+		<%= f.label :state_abbr, "State" %><br />
+		<%= f.select(:state_abbr, options_for_select(us_states, "")) %>
+	</div>
+
+	<div>
+		<%= f.label :zip_code, "Zip" %><br />
+		<%= f.text_field :zip_code %><br />
+	</div>
+
+	<div>
+		<%= f.label :email %><br />
+		<%= f.text_field :email %><br />
+	</div>
+
+	<div>
+		I plan on purchasing my next vehicle within<br />
+		<% @purchase_period_options.each do |button| %>
+		<%= f.radio_button :purchase_period, button %><%= f.label :purchase_period, button %><br />
+		<% end %>
+	</div>
+
+	<div>
+		I am interested in the following Vehicles<br />
+		<% @vehicles.each do |vehicle| %>
+		<%= f.check_box :vehicles, {}, vehicle %> <%= f.label :vehicle, vehicle %><br />
+		<% end %>
+	</div>
+
+	<div>
+		How likely would you be to consider Nissan for your next new vehicle purchase?<br />
+		<% @consideration.each do |consider_option| %>
+		<%= f.radio_button :consider_nissan, consider_option %><%= f.label :consider_nissan, consider_option %><br />
+		<% end %>
+	</div>
+
+	<div>
+		What is your overall opinion of Nissan?<br />
+		<table><tr>
+			<td>Excellent</td>
+			<% (1..10).to_a.reverse.each do |number| %>
+			<td><%= number %><br>
+			<%= f.radio_button :opinion, number %></td>
+			<% end %>
+			<td>Poor</td>
+		</tr></table>
+	</div>
+
+	<div>
+		How would you like to participate in today's experience?<br />
+		<%= f.radio_button :participation, "driver" %><%= f.label :participation, "I will be driving today or may want to drive." %><br />
+		<%= f.radio_button :participation, "passenger" %><%= f.label :participation, "I would prefer to ride today." %>
+	</div>
+
+	<div>
+		<%= f.check_box :agree_to_terms %><%= f.label :agree_to_terms, "I have read and understood this entire agreement." %>
+	</div>
+
+	<div>
+		<%= f.check_box :opt_in_news %><%= f.label :opt_in_news, "I would like to receive exciting product and event news from Nissan." %>
+	</div>
+
+	<div>
+		<%= f.check_box :contact_me %><%= f.label :contact_me, "I would like to be contacted by a Nissan dealer for more vehicle information." %>
+	</div>
+
+	<div>
+		<%= f.submit "Submit" %>
+	</div>
+<% end %>
