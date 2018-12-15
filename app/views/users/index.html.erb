@@ -7,7 +7,7 @@
 </div>
 
 <div class="row">
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><%= image_tag "hero_image.jpg", class: "hero-image" %></div>
+	<div class="col"><%= image_tag "hero_image.jpg", class: "hero-image" %></div>
 </div>
 
 <%= form_for @user do |f| %>
@@ -18,68 +18,68 @@
 	<% end %>
 
 	<div class="row">
-		<div class="col">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 			<%= f.label :first_name, "First Name" %><br />
 			<div class="input-group">
 			<%= f.text_field :first_name, class: "input-" %>
 			</div>
 		</div>
 
-		<div class="col">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 			<%= f.label :last_name, "Last Name" %><br />
 			<%= f.text_field :last_name %><br />
 		</div>		
 	</div>
 
 	<div class="row">
-		<div class="col-8">
+		<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8">
 			<%= f.label :street_address, "Address" %><br />
 			<%= f.text_field :street_address %>
 		</div>
 
-		<div class="col-4">
+		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 			<label for="">Apt/Suite</label>
 			<input type="text" />
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="col-6">
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 			<%= f.label :city %><br />
 			<%= f.text_field :city %><br />
 		</div>
 
-		<div class="col-3">
+		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 			<%= f.label :state_abbr, "State" %><br />
 			<%= f.select(:state_abbr, options_for_select(us_states, "")) %>
 		</div>
 
-		<div class="col-3">
+		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 			<%= f.label :zip_code, "Zip" %><br />
 			<%= f.text_field :zip_code %><br />
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="col">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 			<%= f.label :email %><br />
 			<%= f.text_field :email %><br />
 		</div>
-		<div class="col">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 			<label for="">Email confirmation</label>
 			<input type="text" />
 		</div>
 	</div>
 
 	<div class="row my-2">
-		<div class="col bg-light px-4 py-4">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 bg-light px-4 py-4">
 			I plan on purchasing my next vehicle within<br />
 			<% @purchase_period_options.each do |button| %>
 			<%= f.radio_button :purchase_period, button %><%= f.label :purchase_period, button %><br />
 			<% end %>
 		</div>
 
-		<div class="col bg-light px-4 py-4">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 bg-light px-4 py-4">
 			I am interested in the following Vehicles<br />
 			<% @vehicles.each do |vehicle| %>
 			<%= f.check_box :vehicles, {}, vehicle %> <%= f.label :vehicle, vehicle %><br />
