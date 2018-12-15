@@ -1,82 +1,152 @@
+<div class="row">
+	<div class="col-4"><%= image_tag "nissan_logo.jpg" %></div>
+	<div class="col-8 text-right">
+		<h2>Nissan Intelligent Mobility Tour</h2>
+		<h5>Fillmore Jazz Festival</h5>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><%= image_tag "hero_image.jpg", class: "hero-image" %></div>
+</div>
+
 <%= form_for @user do |f| %>
 	<% flash.each do |key, value| %>
-	<div class="<%= flash_class(key) %>">
-		<%= value %>
+	<div class="row <%= flash_class(key) %>">
+		<div class="col"><%= value %></div>
 	</div>
 	<% end %>
 
-	<div>
-		<%= f.label :first_name, "First Name" %><br />
-		<%= f.text_field :first_name %>
+	<div class="row">
+		<div class="col">
+			<%= f.label :first_name, "First Name" %><br />
+			<div class="input-group">
+			<%= f.text_field :first_name, class: "input-" %>
+			</div>
+		</div>
+
+		<div class="col">
+			<%= f.label :last_name, "Last Name" %><br />
+			<%= f.text_field :last_name %><br />
+		</div>		
 	</div>
 
-	<div>
-		<%= f.label :last_name, "Last Name" %><br />
-		<%= f.text_field :last_name %><br />
+	<div class="row">
+		<div class="col-8">
+			<%= f.label :street_address, "Address" %><br />
+			<%= f.text_field :street_address %>
+		</div>
+
+		<div class="col-4">
+			<label for="">Apt/Suite</label>
+			<input type="text" />
+		</div>
 	</div>
 
-	<div>
-		<%= f.label :street_address, "Address" %><br />
-		<%= f.text_field :street_address %>
+	<div class="row">
+		<div class="col-6">
+			<%= f.label :city %><br />
+			<%= f.text_field :city %><br />
+		</div>
+
+		<div class="col-3">
+			<%= f.label :state_abbr, "State" %><br />
+			<%= f.select(:state_abbr, options_for_select(us_states, "")) %>
+		</div>
+
+		<div class="col-3">
+			<%= f.label :zip_code, "Zip" %><br />
+			<%= f.text_field :zip_code %><br />
+		</div>
 	</div>
 
-	<div>
-		<%= f.label :city %><br />
-		<%= f.text_field :city %><br />
+	<div class="row">
+		<div class="col">
+			<%= f.label :email %><br />
+			<%= f.text_field :email %><br />
+		</div>
+		<div class="col">
+			<label for="">Email confirmation</label>
+			<input type="text" />
+		</div>
 	</div>
 
-	<div>
-		<%= f.label :state_abbr, "State" %><br />
-		<%= f.select(:state_abbr, options_for_select(us_states, "")) %>
-	</div>
-
-	<div>
-		<%= f.label :zip_code, "Zip" %><br />
-		<%= f.text_field :zip_code %><br />
-	</div>
-
-	<div>
-		<%= f.label :email %><br />
-		<%= f.text_field :email %><br />
-	</div>
-
-	<div>
-		I plan on purchasing my next vehicle within<br />
-		<% @purchase_period_options.each do |button| %>
-		<%= f.radio_button :purchase_period, button %><%= f.label :purchase_period, button %><br />
-		<% end %>
-	</div>
-
-	<div>
-		I am interested in the following Vehicles<br />
-		<% @vehicles.each do |vehicle| %>
-		<%= f.check_box :vehicles, {}, vehicle %> <%= f.label :vehicle, vehicle %><br />
-		<% end %>
-	</div>
-
-	<div>
-		How likely would you be to consider Nissan for your next new vehicle purchase?<br />
-		<% @consideration.each do |consider_option| %>
-		<%= f.radio_button :consider_nissan, consider_option %><%= f.label :consider_nissan, consider_option %><br />
-		<% end %>
-	</div>
-
-	<div>
-		What is your overall opinion of Nissan?<br />
-		<table><tr>
-			<td>Excellent</td>
-			<% (1..10).to_a.reverse.each do |number| %>
-			<td><%= number %><br>
-			<%= f.radio_button :opinion, number %></td>
+	<div class="row my-2">
+		<div class="col bg-light px-4 py-4">
+			I plan on purchasing my next vehicle within<br />
+			<% @purchase_period_options.each do |button| %>
+			<%= f.radio_button :purchase_period, button %><%= f.label :purchase_period, button %><br />
 			<% end %>
-			<td>Poor</td>
-		</tr></table>
+		</div>
+
+		<div class="col bg-light px-4 py-4">
+			I am interested in the following Vehicles<br />
+			<% @vehicles.each do |vehicle| %>
+			<%= f.check_box :vehicles, {}, vehicle %> <%= f.label :vehicle, vehicle %><br />
+			<% end %>
+		</div>
 	</div>
 
-	<div>
-		How would you like to participate in today's experience?<br />
-		<%= f.radio_button :participation, "driver" %><%= f.label :participation, "I will be driving today or may want to drive." %><br />
-		<%= f.radio_button :participation, "passenger" %><%= f.label :participation, "I would prefer to ride today." %>
+	<div class="row my-2">
+		<div class="col bg-light px-4 py-4">
+			How likely would you be to consider Nissan for your next new vehicle purchase?<br />
+			<% @consideration.each do |consider_option| %>
+			<%= f.radio_button :consider_nissan, consider_option %><%= f.label :consider_nissan, consider_option %><br />
+			<% end %>
+		</div>
+	</div>
+
+	<div class="row my-2">
+		<div class="col bg-light px-4 py-4">
+			What is your overall opinion of Nissan?<br />
+			<table><tr>
+				<td>Excellent</td>
+				<% (1..10).to_a.reverse.each do |number| %>
+				<td><%= number %><br>
+				<%= f.radio_button :opinion, number %></td>
+				<% end %>
+				<td>Poor</td>
+			</tr></table>
+		</div>
+	</div>
+
+	<div class="row my-2">
+		<div class="col bg-light px-4 py-4">
+			How would you like to participate in today's experience?<br />
+			<%= f.radio_button :participation, "driver" %><%= f.label :participation, "I will be driving today or may want to drive." %><br />
+			<%= f.radio_button :participation, "passenger" %><%= f.label :participation, "I would prefer to ride today." %>
+		</div>
+	</div>
+
+	<h6>Release of Liability and Indemnity Agreement and Publicity Authorization</h6>
+
+	<div class="row my-2 terms-box">
+		<div class="col px-4 py-4">
+			<p>I hereby agree to participate in Nissan Intelligent Mobility Tour (the “Event”) to be held at San Francisco CA on 2018-06-13, and, on behalf of myself, my family, heirs, personal representatives and assigns, agree to and warrant that:</p>
+
+			<ol>
+				<li>I am eighteen (18) years of age or older and have the right to contract in my own name, I agree to act in a reasonable and cautious manner at all times while participating in the Event as a driver or passenger of a Nissan or Infiniti vehicle (the “Vehicle”), and I will use all safety restraint systems at all times while in the Vehicle. I WILL NOT OPERATE THE VEHICLE WHILE UNDER THE INFLUENCE OF DRUGS OR ALCOHOL.</li>
+				<li>If I am a driver in this Event, I represent, warrant, and covenant that I am currently and validly licensed and insured to drive a motor vehicle in the United States.</li>
+				<li>The details of the Event have been fully explained to me, and I have had the opportunity to ask questions. I have no physical or mental impairment, which might make it dangerous for me to participate in the Event.</li>
+				<li>By signing below, I acknowledge that while operating the vehicle I am not under the influence of drugs, alcohol, or medications that may impair ability to operate a motor vehicle and hereby consent to a breathalyzer test to confirm that this statement is true. If the breathalyzer test is taken and failed, Synergy Marketing Partners, LLC and its affiliates have the right to refuse my test drive.</li>
+				<li>I assume full risk of bodily injury, death or property damage, which I may suffer while at the Event, regardless of the cause or any negligence of a Released Party (defined below).</li>
+				<li>I assume full responsibility for any bodily injury, death or property damage, which I may cause while at the Event, regardless of the cause or any negligence of a Released Party.</li>
+				<li>I will indemnify, defend and hold Nissan North America, Inc. (“NNA”) and its authorized dealers; Nissan Motor Co., Ltd. (“NML”) and its authorized dealers (NNA and NML are collectively referred to herein as “Nissan”); Synergy Marketing Partners, LLC (“SYNMP”; and each of their respective affiliates, shareholders, directors, officers, employees, agents, successors, and assigns (each a “Released Party” or collectively, the “Released Parties”) harmless from any claims, lawsuits and losses, including without limitation, attorneys’ fees resulting from bodily injury, death or property damage which I may cause to myself or another while at the Event, regardless of the cause or any negligence of a Released Party.</li>
+				<li>I grant to Nissan and its authorized dealers; Synergy Marketing Partners, LLC and each of their respective agents and assigns, the absolute right and permission to use, publish and/or broadcast, worldwide, in perpetuity, my name, voice, likeness, picture, photograph and video, in whole or in part, or composites or distortions in character or form, in conjunction with my name, together with or without written or spoken copy (the “Materials”) for advertising, promotional, publicity, public relations purposes in any media including print, television and online media.</li>
+				<li>I understand I have no right to inspect or approve the finished Materials prior to use. I understand and agree that I will not be paid for use of any Materials.</li>
+				<li>I hereby release, discharge and agree to hold harmless the Released Parties from any liability, claim or cause of action caused by, or arising by virtue of (i) bodily injury, death or property damage which I may suffer while at the Event, regardless of the cause or any negligence of a Released Party, and (ii) any use of the Materials, including but not limited to any liability for claims of defamation or invasion of privacy.</li>
+				<li>I understand that this entire Agreement is to be interpreted as broadly as possible in favor of the Released Parties. This Agreement shall be interpreted under the laws of the State of Tennessee. Any litigation will be brought in the courts of the State of Tennessee.</li>
+				<li>By signing below, I acknowledge that I am also agreeing to receive a ‘thank you’ email with a link to an optional online survey and the opportunity to ‘opt in’ to receive further communications from Nissan.</li>
+				<li>I acknowledge that vehicles equipped with telematics features may collect, store and transmit data to Nissan, including data relating to vehicle systems, location, driving performance and operating conditions. I agree that Nissan may, subject to applicable law, use any of this information for any purpose, including but not limited to analyzing vehicle usage and performance, improving product quality, product research and development, market research and marketing.</li>
+				<li>FOR CALIFORNIA LOCATIONS ONLY: In addition, and not by way of limitation to the foregoing, I fully understand and knowingly and expressly waive my rights and benefits under Section 1542 of the California Civil Code or under any analogous federal or state law or regulation. Section 1542 of the California Civil Code states that: A general release does not extend to claims which the creditor does not know or suspect to exist in his or her favor at the time of executing the release, which if known by him or her must have materially affected his settlement with the debtor.</li>
+			</ol>
+
+			<p>I AM VOLUNTARILY SIGNING THIS AGREEMENT. NO ONE HAS MADE ANY ORAL STATEMENT TO INDUCE ME TO SIGN THIS AGREEMENT. I REALIZE THAT BY SIGNING THIS AGREEMENT, I AM GIVING UP MY RIGHT TO SUE THE RELEASED PARTIES FOR INJURY, DEATH OR DAMAGE I MAY SUFFER AT THE EVENT. IF ANY COURT FINDS A PORTION OF THIS AGREEMENT TO BE INVALID, THE REMAINDER OF THE AGREEMENT WILL NOT BE AFFECTED.</p>
+
+			<p><strong>MINOR CONSENT</strong><br />I have requested that the minor(s) listed below be allowed to accompany me as a passenger in the Event. I certify that (i) the person(s) listed below my signature are minor(s); (ii) the full legal name of the minor(s) are accurate as set forth below; (iii) I am the parent or legal guardian of the minor(s) listed below. In consideration for allowing the minor(s) to participate, I agree that the terms of the Agreement above shall likewise bind the minor passengers and their respective family, heirs, personal representatives, and assigns. I hereby release and agree to indemnify, on behalf of each minor listed below, the Released Parties from and against any and all liability arising out of the participation of the minor(s) in the Event.</p>
+
+			<p><strong>Talent/Individual Release Form</strong><br />I hereby irrevocably give Nissan North America the right and permission to copyright and/or publish, reproduce or otherwise use my name, voice and likeness and/or written material, photographs, motion pictures and audio-visual magnetic recordings about or by me for instruction, art advertising, trade or any other lawful purpose whatsoever. I hereby agree to relinquish all rights, title and interest I may have in the finished product or the advertising copy that may be used in connection therewith.</p>
+		</div>
 	</div>
 
 	<div>
@@ -91,7 +161,9 @@
 		<%= f.check_box :contact_me %><%= f.label :contact_me, "I would like to be contacted by a Nissan dealer for more vehicle information." %>
 	</div>
 
-	<div>
-		<%= f.submit "Submit" %>
+	<div class="row">
+		<div class="col">
+			<%= f.submit "Submit" %>
+		</div>
 	</div>
 <% end %>

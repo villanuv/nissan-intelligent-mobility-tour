@@ -13,3 +13,35 @@
  *= require_tree .
  *= require_self
  */
+
+@font-face {
+  font-family: 'NissanBrandW01 Regular';
+  src:url('NissanBrandW01-Regular.eot');
+  src:url('NissanBrandW01-Regular.eot?#iefix') format('embedded-opentype'),
+    url('NissanBrandW01-Regular.svg#icomoon') format('svg'),
+    url('NissanBrandW01-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+	font-family: 'NissanBrandW01 Regular' !important;
+	font-size: 14px !important;
+}
+
+.hero-image {
+	width: 100%;
+	height: auto;
+}
+
+input[type=text],
+input[type=submit],
+select { 
+	width: 100%;
+}
+
+.terms-box {
+	font-size: 10px !important;
+	height: 300px;
+	overflow-y: scroll;
+}
