@@ -176,20 +176,20 @@
 
 	<div class="row mt-2">
 		<div class="col">
-		<%= f.check_box :agree_to_terms %><sup>*</sup><%= f.label :agree_to_terms, "I have read and understood this entire agreement." %>
+		<%= f.check_box :agree_to_terms %><sup>*</sup>I have read and understood this entire agreement.
 		</div>
 	</div>
 
-	<div class="row mt-2">
+	<div class="row mt-3 mb-2">
 		<div class="col">
-		<input type="checkbox" /><label>I have requested that the minor(s) listed below be allowed to accompany me as a passenger in the Event.</label>
+		<input type="checkbox" />I have requested that the minor(s) listed below be allowed to accompany me as a passenger in the Event.
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col">
-			<div class="border">
-			signature box
+			<div class="border signature-box">
+				<canvas></canvas>
 			</div>
 			<div class="text-uppercase font-weight-bold">Signed on: <%= @date %></div>
 		</div>

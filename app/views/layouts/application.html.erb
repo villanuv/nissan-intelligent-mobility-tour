@@ -8,6 +8,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -16,5 +17,20 @@
 <%= yield %>
 </div>
 
+	<script>
+		var canvas = document.querySelector("canvas");
+		var signaturePad = new SignaturePad(canvas);
+
+		function resizeCanvas() {
+		    // var ratio =  Math.max(window.devicePixelRatio || 1, 1);
+		    canvas.width = $('.signature-box').width();
+		    canvas.height = "90";
+		    canvas.getContext("2d").scale(ratio, ratio);
+		    signaturePad.clear();
+		}
+
+		window.addEventListener("resize", resizeCanvas);
+		resizeCanvas();
+	</script>
 </body>
 </html>
