@@ -46,9 +46,13 @@ select {
 	border-color: #c7ced5 !important;	
 }
 
+input[type=radio],
+input[type=checkbox] {
+	margin-right: 6px;
+}
+
 input[type=submit] {
 	border: none;
-	back
 }
 
 .border {
@@ -74,6 +78,20 @@ select {
 	background-color: #fff;
 }
 
+ul, ul li {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	line-height: 14px;
+}
+
+ol {
+	list-style-type: decimal;
+}
+
 .row-height-fix {
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -86,6 +104,17 @@ select {
 	align-items: stretch;
 }
 
+.table-label {
+	padding-right: 10px;
+}
+
+.table-cell-width {
+	width: 24px !important;
+}
+
+.table-rank {
+	margin-top: -6px;
+}
 
 .terms-box {
 	border: 1px solid #c7ced5 !important;
