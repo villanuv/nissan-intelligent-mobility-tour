@@ -92,6 +92,8 @@ GEM
     multi_json (1.13.1)
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
+    parsley-rails (2.8.1.0)
+      railties (>= 3.0.0)
     public_suffix (3.0.3)
     rack (1.6.11)
     rack-test (0.6.3)
@@ -194,6 +196,7 @@ DEPENDENCIES
   faker
   jbuilder (~> 2.0)
   jquery-rails
+  parsley-rails
   rails (= 4.2.5)
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
