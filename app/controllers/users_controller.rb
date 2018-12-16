@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 		@purchase_period_options = ["1 Month", "1-3 Months", "4-6 Months", "7-12 Months", "More than 1 Year"]
 		@vehicles = ["LEAF", "Kicks", "Rogue Sport", "Rogue"]
 		@consideration = ["Definitely would consider", "Probably would consider", "Might or might not consider", "Probably would not consider", "Definitely would not consider"]
+		@date = DateTime.now.strftime("%m/%d/%Y")
 	end
 
 	def create
