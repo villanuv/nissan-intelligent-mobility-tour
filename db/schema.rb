@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181214030003) do
+ActiveRecord::Schema.define(version: 20181217073840) do
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",      null: false
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20181214030003) do
     t.boolean  "agree_to_terms"
     t.boolean  "opt_in_news"
     t.boolean  "contact_me"
+    t.string   "apt_suite"
   end
 
 end
