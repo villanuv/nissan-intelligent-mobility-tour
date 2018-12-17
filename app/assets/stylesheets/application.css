@@ -28,11 +28,26 @@
 body {
 	font-family: 'NissanBrandW01 Regular' !important;
 	font-size: 14px !important;
+
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none;
 }
 
 .hero-image {
 	width: 100%;
 	height: auto;
+}
+
+.flash-messages {
+	background-color: #c6132d;
+    color: #fff;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
 }
 
 input[type=text],

@@ -37,7 +37,8 @@
 				$('.bs-callout-info').toggleClass('hidden', !ok);
 				$('.bs-callout-warning').toggleClass('hidden', ok);
 		  	})
-			.on('form:submit', function() {
+			.on('form:submit', function(event) {
+		    	event.preventDefault();
 		    	return false; // Don't submit form for this demo
 			});
 		});
