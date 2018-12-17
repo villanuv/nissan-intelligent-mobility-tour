@@ -63,7 +63,7 @@
 	<div class="row mt-2 pt-2">
 		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 			<sup>*</sup><%= f.label :email %><br />
-			<%= f.text_field :email, {'required': true, 'data-parsley-trigger': 'blur', 'data-parsley-iff': '#user_email_confirmation', 'data-parsley-iff-message': '', 'class': 'border-radius'} %>
+			<%= f.text_field :email, {'required': true, 'data-parsley-type': 'email', 'data-parsley-trigger': 'blur', 'data-parsley-iff': '#user_email_confirmation', 'data-parsley-iff-message': '', 'class': 'border-radius'} %>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 			<sup>*</sup><%= f.label :email_confirmation %><br />
