@@ -77,6 +77,15 @@ sup {
 select {
 	height: 38px;
 	background-color: #fff;
+	-moz-appearance: none; 
+	-webkit-appearance: none; 
+	appearance: none;
+	border: 1px solid #c7ced5 !important;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	background: url('/assets/arrow.png') no-repeat;
+	background-position: right 5px center;
 }
 
 ul, ul li {
@@ -127,6 +136,16 @@ ol {
 .btn-submit {
 	color: #fff;
 	background-color: #c6132d !important;
+}
+
+#parsley-id-multiple-useragree_to_terms {
+	width: 100%;
+	clear: both;
+	padding-left: 15px;
+}
+
+.parsley-required {
+	color: #c6132d;
 }
 
 @media (max-width: 576px) {

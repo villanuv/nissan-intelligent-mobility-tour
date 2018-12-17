@@ -22,15 +22,40 @@
 		var signaturePad = new SignaturePad(canvas);
 
 		function resizeCanvas() {
-		    // var ratio =  Math.max(window.devicePixelRatio || 1, 1);
 		    canvas.width = $('.signature-box').width();
 		    canvas.height = "90";
-		    canvas.getContext("2d").scale(ratio, ratio);
 		    signaturePad.clear();
 		}
 
 		window.addEventListener("resize", resizeCanvas);
 		resizeCanvas();
+
+		$(function () {
+			$('form').parsley()
+			.on('field:validated', function() {
+				var ok = $('.parsley-error').length === 0;
+				$('.bs-callout-info').toggleClass('hidden', !ok);
+				$('.bs-callout-warning').toggleClass('hidden', ok);
+		  	})
+			.on('form:submit', function() {
+		    	return false; // Don't submit form for this demo
+			});
+		});
+
+		var iffRecursion = false;
+		window.Parsley.addValidator('iff', {
+			validateString: function(value, requirement, instance) {
+		    	var $partner = $(requirement);
+		    	var isValid = $partner.val() == value;
+		    	if (iffRecursion) {
+		        	iffRecursion = false;
+		        } else {
+		        	iffRecursion = true;
+		        	$partner.parsley().validate();
+		        }
+				return isValid;
+		    }
+		});
 	</script>
 </body>
 </html>
