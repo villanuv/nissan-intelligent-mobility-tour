@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-	before_action :set_variables, only: [:index, :create] 
+	before_action :set_variables, only: [:new, :create] 
 
-	def index
+	def new
 		@user = User.new
 	end
 
