@@ -12,7 +12,7 @@ A web project to capture user data for participants at the Fillmore Jazz Festiva
 
 ## General Notes
 
-This project also considers mobile-first design, using Bootstrap’s various classes to achieve a fully responsive layout. I began with an outside-in approach, starting with Capybara testing. As I got further deeper into it, that was abandoned along with further RSpec tests. I moved forward incrementally with each task by reading errors. This is the reason for multiple migrations. The canvas signature is saved as data URL.
+This project also considers mobile-first design, using Bootstrap’s various classes to achieve a fully responsive layout. I began with an outside-in approach, starting with Capybara testing. As I got further deeper into it, that was abandoned along with further RSpec tests. I moved forward incrementally with each task by reading errors. This is the reason for multiple migrations. The canvas signature is saved as data URL. And lastly, styling was made overall consistent for Chrome, Firefox and Safari on macOS (see use of arrow.png).
 
 ## UX Improvements:
 - Disabled text selection to prevent user from selecting text beyond signature box. That could be problematic.
