@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 	    	flash[:success] = "Thank you for submitting your information. Enjoy your ride!"
 	    else
 	    	flash[:alert] = "Please review the required fields."
-	    	render action: 'index'
+	    	render action: 'new'
 	    end
 	end
 
