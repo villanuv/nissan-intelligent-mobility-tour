@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
 	validates :consider_nissan, presence: true
 	validates :opinion, presence: true
 	validates :participation, presence: true
-	validates :agree_to_terms, presence: true
 
 	attr_accessor :email_confirmation
 

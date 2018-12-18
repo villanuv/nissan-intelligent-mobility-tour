@@ -4,8 +4,8 @@
 	<title>Nissan Intelligent Mobility Signup</title>
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
@@ -30,20 +30,6 @@
 		window.addEventListener("resize", resizeCanvas);
 		resizeCanvas();
 
-		$(function () {
-			$('form').parsley()
-			.on('field:validated', function() {
-				// var ok = $('.parsley-error').length === 0;
-				// $('.bs-callout-info').toggleClass('hidden', !ok);
-				// $('.bs-callout-warning').toggleClass('hidden', ok);
-				
-		  	})
-			.on('form:submit', function(event) {
-		    	event.preventDefault();
-		    	return false; // Don't submit form for this demo
-			});
-		});
-
 		var iffRecursion = false;
 		window.Parsley.addValidator('iff', {
 			validateString: function(value, requirement, instance) {
@@ -57,6 +43,17 @@
 		        }
 				return isValid;
 		    }
+		});
+
+		$(function () {
+			$('form')
+			.on('submit', function() {
+				if(!signaturePad.isEmpty()){
+					$('#user_signature_pad_string').val(signaturePad.toDataURL());
+				}
+			});
+
+			$('form').parsley();
 		});
 	</script>
 </body>

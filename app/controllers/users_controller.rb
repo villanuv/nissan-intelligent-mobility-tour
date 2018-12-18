@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-	include StatesHelper
-
 	before_action :set_variables, only: [:index, :create] 
 
 	def index
@@ -27,7 +25,7 @@ class UsersController < ApplicationController
 			:first_name, :last_name, :street_address, :apt_suite, :city, :state_abbr, :zip_code, 
 			:email, :purchase_period, :consider_nissan, :opinion,
 			:participation, :agree_to_terms, :accompanying_minors, :opt_in_news,
-			:contact_me, vehicles:[]
+			:contact_me, :signature_pad_string, vehicles:[]
 		)
 	end
 

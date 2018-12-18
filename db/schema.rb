@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181217075938) do
+ActiveRecord::Schema.define(version: 20181218030942) do
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "street_address"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20181217075938) do
     t.boolean  "contact_me"
     t.string   "apt_suite"
     t.boolean  "accompanying_minors"
+    t.binary   "signature_pad_string"
   end
 
 end

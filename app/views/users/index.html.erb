@@ -96,9 +96,6 @@
 			<% @vehicles.each do |vehicle| %>
 				<li><%= f.check_box :vehicles, {multiple: true, 'data-parsley-required': '', 'data-parsley-multiple': 'nissan-vehicles', 'data-parsley-errors-container': '.vehicle-error', 'data-parsley-required-message': 'Choose ONE or more Nissan Vehicles.'}, vehicle %> <%= f.label :vehicle, vehicle %></li>
 			<% end %>
-			<% if @user.errors[:vehicles].present? %>
-				<li class="parsley-required">Please choose ONE or more Nissan vehicles.</li>
-			<% end %>
 				<li class="vehicle-error"></li>
 			</ul>
 			</div>
@@ -195,16 +192,14 @@
 
 	<div class="row mt-2">
 		<div class="col">
-		<%= f.check_box :agree_to_terms, required: true %><sup>*</sup>I have read and understood this entire agreement.
-		<% if @user.errors[:agree_to_terms].present? %>
-			<div class="parsley-required">This is required.</div>
-		<% end %>
+		<%= f.check_box :agree_to_terms %>I have read and understood this entire agreement.
 		</div>
 	</div>
 
 	<div class="row mt-3 mb-2">
 		<div class="col">
 		<%= f.check_box :accompanying_minors %>I have requested that the minor(s) listed below be allowed to accompany me as a passenger in the Event.
+		<%= f.hidden_field :signature_pad_string %>
 		</div>
 	</div>
 
