@@ -16,7 +16,7 @@ This project also considers mobile-first design, using Bootstrap’s various cla
 
 ## UX Improvements:
 - Disabled text selection to prevent user from selecting text beyond signature box. That could be problematic.
-- Added asterisk for `Email confirmation` because it technically is.
+- Added asterisk/required for `Email confirmation` because it technically is.
 - I added a script for Parsley to ensure the two email addresses are the same. It remains buggy right now.
 - Disabled default Rails error formatting for radio buttons (and checkboxes) to fit layout better, and added relevant messages.
 - As shown in the screenshot, I left the checkbox checked for Nissan product and event news.
