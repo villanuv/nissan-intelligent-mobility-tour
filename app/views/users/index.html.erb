@@ -79,7 +79,10 @@
 			<sup>*</sup>I plan on purchasing my next vehicle within
 			<ul class="mt-3 mb-0">
 			<% @purchase_period_options.each do |button| %>
-				<li><%= f.radio_button :purchase_period, button, {'data-parsley-required': '', 'data-parsley-multiple': 'purchase-period', 'data-parsley-errors-container': '.purchase-period-error', 'data-parsley-required-message': 'Choose ONE option.'} %><%= f.label :purchase_period, button %></li>
+				<li><%= f.radio_button :purchase_period, button, {required: true, 'data-parsley-required': '', 'data-parsley-multiple': 'purchase-period', 'data-parsley-errors-container': '.purchase-period-error', 'data-parsley-required-message': 'Choose ONE option.'} %><%= f.label :purchase_period, button %></li>
+			<% end %>
+			<% if @user.errors[:purchase_period].present? %>
+				<li class="parsley-required">Please choose ONE option.</li>
 			<% end %>
 				<li class="purchase-period-error"></li>
 			</ul>
@@ -93,6 +96,9 @@
 			<% @vehicles.each do |vehicle| %>
 				<li><%= f.check_box :vehicles, {multiple: true, 'data-parsley-required': '', 'data-parsley-multiple': 'nissan-vehicles', 'data-parsley-errors-container': '.vehicle-error', 'data-parsley-required-message': 'Choose ONE or more Nissan Vehicles.'}, vehicle %> <%= f.label :vehicle, vehicle %></li>
 			<% end %>
+			<% if @user.errors[:vehicles].present? %>
+				<li class="parsley-required">Please choose ONE or more Nissan vehicles.</li>
+			<% end %>
 				<li class="vehicle-error"></li>
 			</ul>
 			</div>
@@ -105,7 +111,10 @@
 			<sup>*</sup>How likely would you be to consider Nissan for your next new vehicle purchase?
 			<ul class="mt-3 mb-0">
 			<% @consideration.each do |consider_option| %>
-				<li><%= f.radio_button :consider_nissan, consider_option, {'data-parsley-required': '', 'data-parsley-multiple': 'consider-option', 'data-parsley-errors-container': '.consider-option-error', 'data-parsley-required-message': 'Choose ONE option.'} %><%= f.label :consider_nissan, consider_option %></li>
+				<li><%= f.radio_button :consider_nissan, consider_option, {required: true, 'data-parsley-required': '', 'data-parsley-multiple': 'consider-option', 'data-parsley-errors-container': '.consider-option-error', 'data-parsley-required-message': 'Choose ONE option.'} %><%= f.label :consider_nissan, consider_option %></li>
+			<% end %>
+			<% if @user.errors[:consider_nissan].present? %>
+				<li class="parsley-required">Please choose ONE option.</li>
 			<% end %>
 				<li class="consider-option-error"></li>
 			</ul>
@@ -121,11 +130,14 @@
 				<td class="align-bottom table-label"><small>Excellent</small></td>
 				<% (1..10).to_a.reverse.each do |number| %>
 				<td class="table-cell-width">
-					<%= number %><div class="pt-0 table-rank"><%= f.radio_button :opinion, number, {'data-parsley-required': '', 'data-parsley-multiple': 'nissan-opinion', 'data-parsley-errors-container': '.nissan-opinion-error', 'data-parsley-required-message': 'Choose ONE option.'} %></div>
+					<%= number %><div class="pt-0 table-rank"><%= f.radio_button :opinion, number, {required: true, 'data-parsley-required': '', 'data-parsley-multiple': 'nissan-opinion', 'data-parsley-errors-container': '.nissan-opinion-error', 'data-parsley-required-message': 'Choose ONE option.'} %></div>
 				</td>
 				<% end %>
 				<td class="align-bottom"><small>Poor</small></td>
 			</tr></table>
+			<% if @user.errors[:opinion].present? %>
+			<div class="parsley-required">Please choose ONE option.</div>
+			<% end %>
 			<div class="nissan-opinion-error"></div>
 			</div>
 		</div>
@@ -184,6 +196,9 @@
 	<div class="row mt-2">
 		<div class="col">
 		<%= f.check_box :agree_to_terms, required: true %><sup>*</sup>I have read and understood this entire agreement.
+		<% if @user.errors[:agree_to_terms].present? %>
+			<div class="parsley-required">This is required.</div>
+		<% end %>
 		</div>
 	</div>
 

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+	include StatesHelper
+
 	before_action :set_variables, only: [:index, :create] 
 
 	def index
